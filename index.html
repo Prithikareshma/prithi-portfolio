@@ -1,358 +1,198 @@
-<!DOCTYPE html>
+          <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PRITHIKA M | Portfolio</title>
-<style>
-  /* Reset */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: #0d1117;
-    color: #e6edf3;
-    line-height: 1.6;
-    scroll-behavior: smooth;
-    position: relative;
-    overflow-x: hidden;
-  }
-
-  /* Floating background animation */
-  .floating-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-    overflow: hidden;
-  }
-
-  .floating-bg span {
-    position: absolute;
-    display: block;
-    width: 20px;
-    height: 20px;
-    background: rgba(88, 166, 255, 0.2);
-    border-radius: 50%;
-    animation: float 15s linear infinite;
-  }
-
-  @keyframes float {
-    0% { transform: translateY(100vh) translateX(0); opacity: 0; }
-    10% { opacity: 1; }
-    100% { transform: translateY(-10vh) translateX(50px); opacity: 0; }
-  }
-
-  /* Navbar */
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #161b22;
-    padding: 20px 0 15px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-  }
-
-  nav h1 {
-    font-size: 26px;
-    color: #58a6ff;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-  }
-
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    width: 100%;
-  }
-
-  nav ul li a {
-    color: #e6edf3;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-  }
-
-  nav ul li a:hover {
-    color: #58a6ff;
-  }
-
-  /* Timeline Sections */
-  section {
-    position: relative;
-    padding: 40px 20px; /* spacing between sections */
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    opacity: 0;
-    transform: translateX(-40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-
-  /* Add extra padding for About section to separate from navbar */
-  #about {
-    padding-top: 180px; /* consistent gap from navbar on desktop and mobile */
-  }
-
-  section.show {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  section:nth-child(even) {
-    justify-content: flex-end;
-    transform: translateX(40px);
-  }
-
-  section:nth-child(even).show {
-    transform: translateX(0);
-  }
-
-  section .content {
-    background: #161b22;
-    padding: 18px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    max-width: 500px;
-    position: relative;
-  }
-
-  section h2 {
-    font-size: 24px;
-    color: #58a6ff;
-    margin-bottom: 10px;
-  }
-
-  /* Timeline line */
-  .timeline {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background: #58a6ff33;
-    transform: translateX(-50%);
-    z-index: 0;
-  }
-
-  section .dot {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 12px;
-    height: 12px;
-    background: #58a6ff;
-    border-radius: 50%;
-    z-index: 1;
-  }
-
-  a {
-    color: #58a6ff;
-    text-decoration: none;
-  }
-
-  footer {
-    background: #161b22;
-    text-align: center;
-    padding: 15px;
-    color: #8b949e;
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    nav ul {
-      flex-wrap: wrap;
-      justify-content: center;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRITHIKA M | Portfolio</title>
+ 
+  <!-- AOS Animation CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #0d1117;
+      color: #e6edf3;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    header {
+      text-align: center;
+      padding: 50px 20px 20px;
+    }
+    header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #58a6ff;
+    }
+    nav {
+      margin-top: 20px;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #c9d1d9;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #58a6ff;
+    }
     section {
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      transform: translateY(40px);
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 20px;
     }
-
-    section:nth-child(even) {
-      justify-content: center;
-      transform: translateY(40px);
+    h2 {
+      color: #58a6ff;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      text-align: left;
     }
-
-    section.show {
-      transform: translateY(0);
+    /* Box Styling */
+    .box {
+      background: #161b22;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
     }
-
-    section .content {
-      max-width: 90%;
+    .box:hover {
+      transform: translateY(-5px);
     }
-
-    .timeline {
-      left: 20px;
+    ul {
+      list-style: none;
     }
-
-    section .dot {
-      left: 20px;
+    ul li {
+      margin-bottom: 10px;
     }
-
-    /* About section padding for mobile */
-    #about {
-      padding-top: 160px;
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #161b22;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #8b949e;
     }
-  }
-</style>
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      nav a {
+        display: inline-block;
+        margin: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <!-- Header -->
+  <header>
+    <h1>PRITHIKA M</h1>
+    <p>Machine Learning & Web Development</p>
+    <nav>
+      <a href="#objective">Objective</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#internship">Internship</a>
+      <a href="#workshops">Workshops</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-<!-- Floating Background -->
-<div class="floating-bg">
-  <span style="left:10%; width:15px; height:15px; animation-duration:12s;"></span>
-  <span style="left:25%; width:20px; height:20px; animation-duration:18s;"></span>
-  <span style="left:50%; width:25px; height:25px; animation-duration:20s;"></span>
-  <span style="left:70%; width:15px; height:15px; animation-duration:15s;"></span>
-  <span style="left:85%; width:18px; height:18px; animation-duration:22s;"></span>
-</div>
+  <!-- Objective -->
+  <section id="objective" data-aos="fade-up">
+    <h2>Objective</h2>
+    <div class="box">
+      <p>I am a motivated and detail-focused person looking for a role that combines machine learning and web development. I want to build smart and easy-to-use applications. I am eager to use my skills in Python, HTML/CSS, and machine learning to create helpful digital solutions.</p>
+    </div>
+  </section>
 
-<!-- Navbar -->
-<nav>
-  <h1>PRITHIKA M</h1>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#internship">Internship</a></li>
-    <li><a href="#workshops">Workshops</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<!-- Timeline line -->
-<div class="timeline"></div>
-
-<!-- Sections -->
-<section id="about">
-  <div class="dot"></div>
-  <div class="content">
-    <h2>About Me</h2>
-    <p>I am a motivated and detail-focused person looking for a role that combines machine learning and web development. I want to build smart and easy-to-use applications. I am eager to use my skills in Python, HTML/CSS, and machine learning to create helpful digital solutions.</p>
-  </div>
-</section>
-
-<section id="education">
-  <div class="dot"></div>
-  <div class="content">
+  <!-- Education -->
+  <section id="education" data-aos="fade-up">
     <h2>Education</h2>
-    <p><b>Bachelor of Technology (AI & ML)</b><br>SNS College of Technology, Coimbatore (2022–2026)<br>Current CGPA: 8.2</p>
-    <p><b>HSC</b><br>Pandiaraj Memorial School, The Nilgiris (2021–2022)<br>72%</p>
-    <p><b>SSLC</b><br>Viswa Santhi Vidyalaya School, The Nilgiris (2019–2020)<br>75%</p>
-  </div>
-</section>
+    <div class="box">
+      <ul>
+        <li><strong>Bachelor of Technology (B.Tech) - AI & ML</strong><br>SNS College of Technology, Coimbatore (2022–2026) | Current CGPA: 8.2</li>
+        <li><strong>Higher Secondary Certificate</strong><br>Pandiaraj Memorial Matriculation School, The Nilgiris (2021–2022) | 72%</li>
+        <li><strong>Secondary School Leaving Certificate</strong><br>Viswa Santhi Vidyalaya Matriculation School, The Nilgiris (2019–2020) | 75%</li>
+      </ul>
+    </div>
+  </section>
 
-<section id="skills">
-  <div class="dot"></div>
-  <div class="content">
-    <h2>Skills</h2>
-    <ul>
-      <li><b>Languages:</b> Python, HTML, CSS, JavaScript, SQL</li>
-      <li><b>Frameworks:</b> React JS</li>
-      <li><b>Databases:</b> SQL Server</li>
-      <li><b>Tools & IDEs:</b> VS Code, Google Colab</li>
-      <li><b>Version Control:</b> Git, GitHub</li>
-      <li><b>Soft Skills:</b> Leadership, Time Management, Communication, Teamwork</li>
-    </ul>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="dot"></div>
-  <div class="content">
+  <!-- Projects -->
+  <section id="projects" data-aos="fade-up">
     <h2>Projects</h2>
-    <ul>
-      <li><b>AI Shopping List:</b> Intelligent system to help users create, manage, and optimize shopping lists using AI.</li>
-      <li><b>Fake News Detection:</b> ML models to detect and filter fake or misleading news.</li>
-      <li><b>Cybersecurity Ticket Management:</b> ML-based system to detect, track, and block cyber threats.</li>
-      <li><b>AI-Based Personalized Learning Path:</b> Recommender system for tailored learning paths.</li>
-      <li><b>Job Title Classification:</b> NLP-based model to classify job titles from resume text.</li>
-    </ul>
-  </div>
-</section>
+    <div class="box"><strong>AI Shopping List</strong><br>Developed an intelligent system to help users create, manage, and optimize their shopping lists with AI.</div>
+    <div class="box"><strong>Fake News Detection</strong><br>Designed and implemented ML models to detect and filter false or misleading news.</div>
+    <div class="box"><strong>Cybersecurity Ticket Management</strong><br>Created a ML-based system to detect and block threats, improving response and efficiency.</div>
+    <div class="box"><strong>AI-Based Personalized Learning Path Recommender</strong><br>Built an AI system to recommend learning paths tailored to users.</div>
+    <div class="box"><strong>Job Title Classification from Resume Text</strong><br>Developed NLP models to classify job titles and predict roles.</div>
+  </section>
 
-<section id="internship">
-  <div class="dot"></div>
-  <div class="content">
-    <h2>Internships</h2>
-    <p><b>Techvolt</b> – Developed classification models using Logistic Regression, Naive Bayes, and KNN.</p>
-    <p><b>COGNIFYZ (Web Development)</b> – Assisted in development of front-end components using HTML, CSS.</p>
-    <p><b>NXTLOGIC (Full Stack Development)</b> – Assisted in development of front-end components using HTML, CSS.</p>
-  </div>
-</section>
+  <!-- Internship -->
+  <section id="internship" data-aos="fade-up">
+    <h2>Internship</h2>
+    <div class="box"><strong>Techvolt</strong> | Machine Learning<br>Worked on Logistic Regression, Naive Bayes, and KNN for text classification.</div>
+    <div class="box"><strong>COGNIFYZ</strong> | Web Development<br>Assisted in developing front-end components using HTML, CSS.</div>
+    <div class="box"><strong>NXTLOGIC</strong> | Full Stack Development<br>Worked on front-end development using HTML, CSS.</div>
+  </section>
 
-<section id="workshops">
-  <div class="dot"></div>
-  <div class="content">
+  <!-- Workshops -->
+  <section id="workshops" data-aos="fade-up">
     <h2>Workshops</h2>
-    <ul>
-      <li>Robotics (SNS College of Technology)</li>
-      <li>ChatGPT (SNS College of Technology)</li>
-      <li>NNN (SNS College of Technology)</li>
-      <li>React JS (SNS College of Technology)</li>
-    </ul>
-  </div>
-</section>
+    <div class="box">Robotics | SNS College of Technology</div>
+    <div class="box">ChatGPT | SNS College of Technology</div>
+    <div class="box">NBN | SNS College of Technology</div>
+    <div class="box">React JS | SNS College of Technology</div>
+  </section>
 
-<section id="contact">
-  <div class="dot"></div>
-  <div class="content">
+  <!-- Skills -->
+  <section id="skills" data-aos="fade-up">
+    <h2>Skills</h2>
+    <div class="box">
+      <ul>
+        <li><strong>Languages:</strong> Python, HTML, CSS, JavaScript, SQL</li>
+        <li><strong>Frameworks:</strong> React JS</li>
+        <li><strong>Databases:</strong> SQL Server</li>
+        <li><strong>Tools & IDEs:</strong> VS Code, Google Colab</li>
+        <li><strong>Version Control:</strong> Git, GitHub</li>
+        <li><strong>Soft Skills:</strong> Leadership, Time Management, Communication, Teamwork</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" data-aos="fade-up">
     <h2>Contact</h2>
-    <p>📞 6374163211</p>
-    <p>📍 Coimbatore, Tamil Nadu</p>
-    <p>📧 <a href="mailto:prithikamuthukumar22@gmail.com">prithikamuthukumar22@gmail.com</a></p>
-    <p>🌐 <a href="https://github.com/prithika-m" target="_blank">GitHub</a> | <a href="#" target="_blank">LinkedIn</a></p>
-  </div>
-</section>
+    <div class="box">
+      <p>📞 6374163211 | 📍 Coimbatore, Tamil Nadu</p>
+      <p>📧 <a href="mailto:prithikamuthukumar22@gmail.com" style="color:#58a6ff;">prithikamuthukumar22@gmail.com</a></p>
+      <p>🌐 <a href="https://github.com/prithika-GitHub" style="color:#58a6ff;" target="_blank">GitHub</a> | 
+         <a href="https://linkedin.com/in/prithika-m" style="color:#58a6ff;" target="_blank">LinkedIn</a></p>
+    </div>
+  </section>
 
-<footer>
-  <p>© 2025 PRITHIKA M | Portfolio</p>
-</footer>
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 PRITHIKA M | All Rights Reserved
+  </footer>
 
-<script>
-  // Scroll Animation
-  const sections = document.querySelectorAll("section");
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add("show");
-        observer.unobserve(entry.target);
-      }
+  <!-- AOS Animation JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
     });
-  }, { threshold: 0.2 });
-
-  sections.forEach(sec => observer.observe(sec));
-
-  // Floating background particles
-  const floating = document.querySelector('.floating-bg');
-  for(let i=0; i<20; i++){
-    const span = document.createElement('span');
-    span.style.left = Math.random() * 100 + '%';
-    span.style.width = span.style.height = Math.random() * 20 + 10 + 'px';
-    span.style.animationDuration = 10 + Math.random()*10 + 's';
-    floating.appendChild(span);
-  }
-</script>
-
+  </script>
 </body>
-</html>
+  </html>
