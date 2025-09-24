@@ -94,7 +94,7 @@
   /* Timeline Sections */
   section {
     position: relative;
-    padding: 40px 20px;
+    padding: 40px 20px; /* spacing between sections */
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -103,8 +103,9 @@
     transition: opacity 0.8s ease, transform 0.8s ease;
   }
 
+  /* Add extra padding for About section to separate from navbar */
   #about {
-    padding-top: 180px; /* gap between navbar and About */
+    padding-top: 180px; /* consistent gap from navbar on desktop and mobile */
   }
 
   section.show {
@@ -128,19 +129,12 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     max-width: 500px;
     position: relative;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-  }
-
-  section .content.glow {
-    box-shadow: 0 0 20px 4px rgba(88, 166, 255, 0.8);
-    transform: scale(1.03);
   }
 
   section h2 {
     font-size: 24px;
     color: #58a6ff;
     margin-bottom: 10px;
-    cursor: pointer; /* indicate hoverable */
   }
 
   /* Timeline line */
@@ -214,6 +208,7 @@
       left: 20px;
     }
 
+    /* About section padding for mobile */
     #about {
       padding-top: 160px;
     }
@@ -307,4 +302,57 @@
 </section>
 
 <section id="workshops">
-  <div class
+  <div class="dot"></div>
+  <div class="content">
+    <h2>Workshops</h2>
+    <ul>
+      <li>Robotics (SNS College of Technology)</li>
+      <li>ChatGPT (SNS College of Technology)</li>
+      <li>NNN (SNS College of Technology)</li>
+      <li>React JS (SNS College of Technology)</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="dot"></div>
+  <div class="content">
+    <h2>Contact</h2>
+    <p>📞 6374163211</p>
+    <p>📍 Coimbatore, Tamil Nadu</p>
+    <p>📧 <a href="mailto:prithikamuthukumar22@gmail.com">prithikamuthukumar22@gmail.com</a></p>
+    <p>🌐 <a href="https://github.com/prithika-m" target="_blank">GitHub</a> | <a href="#" target="_blank">LinkedIn</a></p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 PRITHIKA M | Portfolio</p>
+</footer>
+
+<script>
+  // Scroll Animation
+  const sections = document.querySelectorAll("section");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  sections.forEach(sec => observer.observe(sec));
+
+  // Floating background particles
+  const floating = document.querySelector('.floating-bg');
+  for(let i=0; i<20; i++){
+    const span = document.createElement('span');
+    span.style.left = Math.random() * 100 + '%';
+    span.style.width = span.style.height = Math.random() * 20 + 10 + 'px';
+    span.style.animationDuration = 10 + Math.random()*10 + 's';
+    floating.appendChild(span);
+  }
+</script>
+
+</body>
+</html>
