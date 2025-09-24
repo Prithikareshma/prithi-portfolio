@@ -1,1 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRITHIKA M | Portfolio</title>
+<style>
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Floating background animation */
+  .floating-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+  }
+
+  .floating-bg span {
+    position: absolute;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: rgba(88, 166, 255, 0.2);
+    border-radius: 50%;
+    animation: float 15s linear infinite;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(-10vh) translateX(50px); opacity: 0; }
+  }
+
+  /* Navbar */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #161b22;
+    padding: 20px 0 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  }
+
+  nav h1 {
+    font-size: 26px;
+    color: #58a6ff;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  nav ul li a {
+    color: #e6edf3;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  nav ul li a:hover {
+    color: #58a6ff;
+  }
+
+  /* Timeline Sections */
+  section {
+    position: relative;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  #about {
+    padding-top: 180px; /* gap between navbar and About */
+  }
+
+  section.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  section:nth-child(even) {
+    justify-content: flex-end;
+    transform: translateX(40px);
+  }
+
+  section:nth-child(even).show {
+    transform: translateX(0);
+  }
+
+  section .content {
+    background: #161b22;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    max-width: 500px;
+    position: relative;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  section .content.glow {
+    box-shadow: 0 0 20px 4px rgba(88, 166, 255, 0.8);
+    transform: scale(1.03);
+  }
+
+  section h2 {
+    font-size: 24px;
+    color: #58a6ff;
+    margin-bottom: 10px;
+    cursor: pointer; /* indicate hoverable */
+  }
+
+  /* Timeline line */
+  .timeline {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #58a6ff33;
+    transform: translateX(-50%);
+    z-index: 0;
+  }
+
+  section .dot {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: #58a6ff;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  a {
+    color: #58a6ff;
+    text-decoration: none;
+  }
+
+  footer {
+    background: #161b22;
+    text-align: center;
+    padding: 15px;
+    color: #8b949e;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav ul {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    section {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translateY(40px);
+    }
+
+    section:nth-child(even) {
+      justify-content: center;
+      transform: translateY(40px);
+    }
+
+    section.show {
+      transform: translateY(0);
+    }
+
+    section .content {
+      max-width: 90%;
+    }
+
+    .timeline {
+      left: 20px;
+    }
+
+    section .dot {
+      left: 20px;
+    }
+
+    #about {
+      padding-top: 160px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Floating Background -->
+<div class="floating-bg">
+  <span style="left:10%; width:15px; height:15px; animation-duration:12s;"></span>
+  <span style="left:25%; width:20px; height:20px; animation-duration:18s;"></span>
+  <span style="left:50%; width:25px; height:25px; animation-duration:20s;"></span>
+  <span style="left:70%; width:15px; height:15px; animation-duration:15s;"></span>
+  <span style="left:85%; width:18px; height:18px; animation-duration:22s;"></span>
+</div>
+
+<!-- Navbar -->
+<nav>
+  <h1>PRITHIKA M</h1>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#internship">Internship</a></li>
+    <li><a href="#workshops">Workshops</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Timeline line -->
+<div class="timeline"></div>
+
+<!-- Sections -->
+<section id="about">
+  <div class="dot"></div>
+  <div class="content">
+    <h2>About Me</h2>
+    <p>I am a motivated and detail-focused person looking for a role that combines machine learning and web development. I want to build smart and easy-to-use applications. I am eager to use my skills in Python, HTML/CSS, and machine learning to create helpful digital solutions.</p>
+  </div>
+</section>
+
+<section id="education">
+  <div class="dot"></div>
+  <div class="content">
+    <h2>Education</h2>
+    <p><b>Bachelor of Technology (AI & ML)</b><br>SNS College of Technology, Coimbatore (2022–2026)<br>Current CGPA: 8.2</p>
+    <p><b>HSC</b><br>Pandiaraj Memorial School, The Nilgiris (2021–2022)<br>72%</p>
+    <p><b>SSLC</b><br>Viswa Santhi Vidyalaya School, The Nilgiris (2019–2020)<br>75%</p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="dot"></div>
+  <div class="content">
+    <h2>Skills</h2>
+    <ul>
+      <li><b>Languages:</b> Python, HTML, CSS, JavaScript, SQL</li>
+      <li><b>Frameworks:</b> React JS</li>
+      <li><b>Databases:</b> SQL Server</li>
+      <li><b>Tools & IDEs:</b> VS Code, Google Colab</li>
+      <li><b>Version Control:</b> Git, GitHub</li>
+      <li><b>Soft Skills:</b> Leadership, Time Management, Communication, Teamwork</li>
+    </ul>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="dot"></div>
+  <div class="content">
+    <h2>Projects</h2>
+    <ul>
+      <li><b>AI Shopping List:</b> Intelligent system to help users create, manage, and optimize shopping lists using AI.</li>
+      <li><b>Fake News Detection:</b> ML models to detect and filter fake or misleading news.</li>
+      <li><b>Cybersecurity Ticket Management:</b> ML-based system to detect, track, and block cyber threats.</li>
+      <li><b>AI-Based Personalized Learning Path:</b> Recommender system for tailored learning paths.</li>
+      <li><b>Job Title Classification:</b> NLP-based model to classify job titles from resume text.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="internship">
+  <div class="dot"></div>
+  <div class="content">
+    <h2>Internships</h2>
+    <p><b>Techvolt</b> – Developed classification models using Logistic Regression, Naive Bayes, and KNN.</p>
+    <p><b>COGNIFYZ (Web Development)</b> – Assisted in development of front-end components using HTML, CSS.</p>
+    <p><b>NXTLOGIC (Full Stack Development)</b> – Assisted in development of front-end components using HTML, CSS.</p>
+  </div>
+</section>
+
+<section id="workshops">
+  <div class
